@@ -13,11 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+#include the include and url functions from the django conf library
+from django.conf.urls import include, url
+#inlcude the admin routes from the
 from django.contrib import admin
+#from local directory import views.py
 from . import views
 
 urlpatterns = [
+    #Include the courses route and its urls.py
+    url(r'^courses/', include('courses.urls')),
+
     url(r'^admin/', admin.site.urls),
-    #url(r'^$', views.hello_world),
+    #Make the return of the hello world function the default content on the landing page.
+    url(r'^$', views.hello_world),
 ]
